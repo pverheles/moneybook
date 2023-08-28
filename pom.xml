@@ -8,11 +8,11 @@
 		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.moneyrama</groupId>
-	<artifactId>moneyrama</artifactId>
+	<groupId>com.moneybook</groupId>
+	<artifactId>moneybook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>moneyrama</name>
-	<description>Moneyrama - home finance management</description>
+	<name>moneybook</name>
+	<description>Moneybook - home finance management</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
