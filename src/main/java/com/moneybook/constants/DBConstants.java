@@ -1,4 +1,4 @@
-package com.moneyrama.constants;
+package com.moneybook.constants;
 
 public class DBConstants {
 	public final static int CURRENCY_CODE_LENGTH = 3;

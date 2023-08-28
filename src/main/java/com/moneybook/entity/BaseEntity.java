@@ -1,7 +1,7 @@
-package com.moneyrama.entity;
+package com.moneybook.entity;
 
-import com.moneyrama.constants.DBConstants;
-import com.moneyrama.constants.EntityStates;
+import com.moneybook.constants.DBConstants;
+import com.moneybook.constants.EntityStates;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

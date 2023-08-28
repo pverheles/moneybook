@@ -1,4 +1,4 @@
-package com.moneyrama.entity;
+package com.moneybook.entity;
 
 import jakarta.persistence.Entity;
 
