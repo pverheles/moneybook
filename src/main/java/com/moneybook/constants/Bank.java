@@ -1,6 +1,6 @@
 package com.moneybook.constants;
 
-public enum AccountBank {
+public enum Bank {
     MONOBANK,
     PRIVATBANK
 }
