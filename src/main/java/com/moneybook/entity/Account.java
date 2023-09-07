@@ -1,20 +1,20 @@
 package com.moneybook.entity;
 
 import com.moneybook.constants.Currency;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "account")
 public class Account extends AmountEntity {
 
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    private String bank;
+    @Enumerated(EnumType.STRING)
+    private AccountBank bank;
 
 }
