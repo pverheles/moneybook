@@ -1,5 +1,6 @@
 package com.moneybook.entity;
 
+import com.moneybook.constants.Bank;
 import com.moneybook.constants.Currency;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,6 +16,6 @@ public class Account extends AmountEntity {
     private Currency currency;
 
     @Enumerated(EnumType.STRING)
-    private AccountBank bank;
+    private Bank bank;
 
 }

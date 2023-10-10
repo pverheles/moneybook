@@ -8,7 +8,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "category")
-public class Category extends BaseEntity {
+@Table(name = "envelope")
+public class Envelope extends AmountEntity {
+
+    private ExpensePlan expensePlan;
 
 }

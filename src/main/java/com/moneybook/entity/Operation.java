@@ -9,8 +9,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "category")
-public class MoneyAction extends AmountEntity implements Summable {
+@Table(name = "operation")
+public class Operation extends AmountEntity implements Summable {
 
     @ManyToOne(optional = false)
     private Account account;
@@ -23,10 +23,13 @@ public class MoneyAction extends AmountEntity implements Summable {
         return account.getCurrency();
     }
 
-    // I - income, E - expense
-    @Column
-    private Character type;
+    @ManyToOne
+    private ExpensePlan expensePlan;
 
+    @ManyToOne
+    private Envelope envelope;
 
+    @ManyToOne
+    private IncomeSource incomeSource;
 
 }

@@ -1,7 +1,7 @@
 package com.moneybook.entity;
 
 import com.moneybook.constants.DBConstants;
-import com.moneybook.constants.EntityStates;
+import com.moneybook.constants.State;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -50,12 +50,8 @@ public abstract class BaseEntity {
 	@Column(length = DBConstants.COMMENTS_LENGTH)
 	private String comment;
 
-	private Character state;
-
-	@Transient
-	public boolean isActive() {
-		return EntityStates.ACTIVE.getCode().equals(getState());
-	}
+	@Enumerated(EnumType.STRING)
+	private State state;
 	
 	@Override
 	public String toString() {
