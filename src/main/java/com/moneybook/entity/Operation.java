@@ -29,7 +29,4 @@ public class Operation extends AmountEntity implements Summable {
     @ManyToOne
     private Envelope envelope;
 
-    @ManyToOne
-    private IncomeSource incomeSource;
-
 }
