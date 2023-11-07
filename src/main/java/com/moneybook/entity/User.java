@@ -19,8 +19,6 @@ public class User extends BaseEntity {
 
   private String password;
 
-  private Boolean deleted;
-
   @Column(name = "last_order_id")
   private String lastOrderId;
 

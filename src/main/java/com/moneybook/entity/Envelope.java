@@ -1,10 +1,7 @@
 package com.moneybook.entity;
 
 import com.moneybook.constants.Currency;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +11,7 @@ import lombok.Setter;
 @Table(name = "envelope")
 public class Envelope extends AmountEntity {
 
+    @ManyToOne
     private ExpensePlan expensePlan;
 
     @Enumerated(EnumType.STRING)

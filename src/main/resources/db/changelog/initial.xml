@@ -8,19 +8,7 @@
 
     <changeSet id="initial-01" author="Petro Verheles">
         <sql>
-            CREATE TABLE app_user (
-            id bigserial,
-            create_date timestamp NULL,
-            created_by varchar(255) NULL,
-            modified_by varchar(255) NULL,
-            modify_date timestamp NULL,
-            "version" int8 NULL,
-            email varchar(255) NOT NULL,
-            "name" varchar(255) NULL,
-            "password" varchar(255) NOT NULL,
-            CONSTRAINT app_user_pkey PRIMARY KEY (id),
-            CONSTRAINT uk_app_user_email UNIQUE (email)
-            );
+            // TODO
         </sql>
     </changeSet>
 </databaseChangeLog>
