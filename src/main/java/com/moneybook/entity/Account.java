@@ -13,6 +13,7 @@ import lombok.Setter;
 public class Account extends AmountEntity {
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Currency currency;
 
     @Enumerated(EnumType.STRING)
