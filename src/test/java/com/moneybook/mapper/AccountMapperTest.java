@@ -2,7 +2,8 @@ package com.moneybook.mapper;
 
 import com.moneybook.constants.Bank;
 import com.moneybook.constants.Currency;
-import com.moneybook.dto.AccountDto;
+import com.moneybook.dto.AccountCreationDto;
+import com.moneybook.dto.AccountUpdateDto;
 import com.moneybook.entity.Account;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,19 +22,31 @@ class AccountMapperTest {
     }
 
     @Test
-    void mapDtoToEntity_shouldMapCorrectly() {
-        AccountDto dto = new AccountDto();
-        dto.setName("my account");
-        dto.setAmount(new BigDecimal("200000"));
-        dto.setBank(Bank.PRIVATBANK);
-        dto.setCurrency(Currency.EUR);
+    void mapAccountCreationDtoToEntity_shouldMapCorrectly() {
+        AccountCreationDto accountCreationDto = new AccountCreationDto();
+        accountCreationDto.setName("my account");
+        accountCreationDto.setAmount(new BigDecimal("200000"));
+        accountCreationDto.setBank(Bank.PRIVATBANK);
+        accountCreationDto.setCurrency(Currency.EUR);
 
-        Account account = accountMapper.mapDtoToEntity(dto);
+        Account account = accountMapper.mapAccountCreationDtoToEntity(accountCreationDto);
 
         assertThat(account.getName()).isEqualTo("my account");
         assertThat(account.getAmount()).isEqualTo(new BigDecimal("200000"));
         assertThat(account.getBank()).isEqualTo(Bank.PRIVATBANK);
         assertThat(account.getCurrency()).isEqualTo(Currency.EUR);
+    }
+
+    @Test
+    void mapAccountUpdateDtoToEntity_shouldMapCorrectly() {
+        Account account = new Account();
+        AccountUpdateDto accountUpdateDto = new AccountUpdateDto();
+        accountUpdateDto.setName("my account updated");
+
+        Account mappedAccount = accountMapper.mapAccountUpdateDtoToEntity(accountUpdateDto, account);
+
+        assertThat(mappedAccount).isSameAs(account);
+        assertThat(mappedAccount.getName()).isEqualTo("my account updated");
     }
 
 }

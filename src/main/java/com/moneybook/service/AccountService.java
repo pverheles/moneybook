@@ -1,5 +1,9 @@
 package com.moneybook.service;
 
+import com.moneybook.dto.AccountCreationDto;
+import com.moneybook.dto.AccountReadDto;
+import com.moneybook.entity.Account;
+import com.moneybook.mapper.AccountMapper;
 import com.moneybook.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -7,8 +11,17 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final AccountMapper accountMapper;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
         this.accountRepository = accountRepository;
+        this.accountMapper = accountMapper;
+    }
+
+    public AccountReadDto createAccount(AccountCreationDto accountDto) {
+        Account account = accountMapper.mapAccountCreationDtoToEntity(accountDto);
+        account = accountRepository.save(account);
+        //accountMapper.mapAccountCreationDtoToEntity(ac)
+        return null;
     }
 }

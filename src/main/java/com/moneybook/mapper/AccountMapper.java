@@ -1,19 +1,25 @@
 package com.moneybook.mapper;
 
-import com.moneybook.dto.AccountDto;
+import com.moneybook.dto.AccountCreationDto;
+import com.moneybook.dto.AccountUpdateDto;
 import com.moneybook.entity.Account;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountMapper {
 
-    public Account mapDtoToEntity(AccountDto dto) {
+    public Account mapAccountCreationDtoToEntity(AccountCreationDto accountCreationDto) {
         Account account = new Account();
-        account.setAmount(dto.getAmount());
-        account.setName(dto.getName());
-        account.setBank(dto.getBank());
-        account.setCurrency(dto.getCurrency());
+        account.setAmount(accountCreationDto.getAmount());
+        account.setName(accountCreationDto.getName());
+        account.setBank(accountCreationDto.getBank());
+        account.setCurrency(accountCreationDto.getCurrency());
 
+        return account;
+    }
+
+    public Account mapAccountUpdateDtoToEntity(AccountUpdateDto accountUpdateDto, Account account) {
+        account.setName(accountUpdateDto.getName());
         return account;
     }
 }

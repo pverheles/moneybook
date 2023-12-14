@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class AccountDto {
+public abstract class AccountDto {
 
     @NotNull
     private BigDecimal amount;
