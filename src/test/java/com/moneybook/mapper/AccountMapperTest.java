@@ -3,8 +3,10 @@ package com.moneybook.mapper;
 import com.moneybook.constants.Bank;
 import com.moneybook.constants.Currency;
 import com.moneybook.dto.AccountCreationDto;
+import com.moneybook.dto.AccountIdDto;
 import com.moneybook.dto.AccountUpdateDto;
 import com.moneybook.entity.Account;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,6 +49,16 @@ class AccountMapperTest {
 
         assertThat(mappedAccount).isSameAs(account);
         assertThat(mappedAccount.getName()).isEqualTo("my account updated");
+    }
+
+    @Test
+    void mapEntityToAccountIdDto_shouldMapCorrectly() {
+        Account account = new Account();
+        account.setId(5L);
+
+        AccountIdDto accountIdDto = accountMapper.mapEntityToAccountIdDto(account);
+
+        assertThat(accountIdDto.getId()).isEqualTo(5L);
     }
 
 }

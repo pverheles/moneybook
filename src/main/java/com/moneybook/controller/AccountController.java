@@ -2,6 +2,7 @@ package com.moneybook.controller;
 
 import com.moneybook.dto.AccountCreationDto;
 import com.moneybook.dto.AccountDto;
+import com.moneybook.dto.AccountIdDto;
 import com.moneybook.dto.AccountReadDto;
 import com.moneybook.service.AccountService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public AccountReadDto createAccount(AccountCreationDto accountCreationDto) {
+    public AccountIdDto createAccount(AccountCreationDto accountCreationDto) {
         return accountService.createAccount(accountCreationDto);
     }
 }

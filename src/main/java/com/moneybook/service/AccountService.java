@@ -1,7 +1,7 @@
 package com.moneybook.service;
 
 import com.moneybook.dto.AccountCreationDto;
-import com.moneybook.dto.AccountReadDto;
+import com.moneybook.dto.AccountIdDto;
 import com.moneybook.entity.Account;
 import com.moneybook.mapper.AccountMapper;
 import com.moneybook.repository.AccountRepository;
@@ -18,10 +18,10 @@ public class AccountService {
         this.accountMapper = accountMapper;
     }
 
-    public AccountReadDto createAccount(AccountCreationDto accountDto) {
+    public AccountIdDto createAccount(AccountCreationDto accountDto) {
         Account account = accountMapper.mapAccountCreationDtoToEntity(accountDto);
         account = accountRepository.save(account);
-        //accountMapper.mapAccountCreationDtoToEntity(ac)
-        return null;
+        AccountIdDto accountIdDto = accountMapper.mapEntityToAccountIdDto(account);
+        return accountIdDto;
     }
 }
