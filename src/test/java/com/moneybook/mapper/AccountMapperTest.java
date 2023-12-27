@@ -6,7 +6,6 @@ import com.moneybook.dto.AccountCreationDto;
 import com.moneybook.dto.AccountIdDto;
 import com.moneybook.dto.AccountUpdateDto;
 import com.moneybook.entity.Account;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
