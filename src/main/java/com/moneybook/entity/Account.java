@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "account")
-public class Account extends AmountEntity {
+public class Account extends BaseAmountEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
 
 import java.util.Date;
 
@@ -32,17 +30,6 @@ public abstract class BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "modify_date")
 	private Date modifyDate;
-
-	@CreatedBy
-	@Column(name = "created_by")
-	private String createdBy;
-
-	@LastModifiedBy
-	@Column(name = "modified_by")
-	private String modifiedBy;
-
-	@ManyToOne
-	private User user;
 
 	@Column(length = DBConstants.NAME_LENGTH)
 	private String name;

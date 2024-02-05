@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class AmountEntity extends BaseEntity {
+public abstract class BaseAmountEntity extends BaseOwnedEntity {
 
     @Column(nullable = false, scale = DBConstants.AMOUNT_SCALE, precision = DBConstants.AMOUNT_PRECISION)
     private BigDecimal amount;

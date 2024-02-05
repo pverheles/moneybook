@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "expense_plan")
-public class ExpensePlan extends BaseEntity {
+public class ExpensePlan extends BaseOwnedEntity {
 
 }

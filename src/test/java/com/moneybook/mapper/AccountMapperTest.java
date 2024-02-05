@@ -6,13 +6,17 @@ import com.moneybook.dto.AccountCreationDto;
 import com.moneybook.dto.AccountIdDto;
 import com.moneybook.dto.AccountUpdateDto;
 import com.moneybook.entity.Account;
+import com.moneybook.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(MockitoExtension.class)
 class AccountMapperTest {
 
     AccountMapper accountMapper;
@@ -30,12 +34,16 @@ class AccountMapperTest {
         accountCreationDto.setBank(Bank.PRIVATBANK);
         accountCreationDto.setCurrency(Currency.EUR);
 
-        Account account = accountMapper.mapAccountCreationDtoToEntity(accountCreationDto);
+        User user = new User();
+        user.setEmail("petro@mail.com");
+
+        Account account = accountMapper.mapAccountCreationDtoToEntity(accountCreationDto, user);
 
         assertThat(account.getName()).isEqualTo("my account");
         assertThat(account.getAmount()).isEqualTo(new BigDecimal("200000"));
         assertThat(account.getBank()).isEqualTo(Bank.PRIVATBANK);
         assertThat(account.getCurrency()).isEqualTo(Currency.EUR);
+        assertThat(account.getUser()).isSameAs(user);
     }
 
     @Test

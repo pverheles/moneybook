@@ -1,4 +1,4 @@
-package com.moneybook.filter;
+package com.moneybook.usercontext;
 
 public class UnknownUserException extends RuntimeException {
 

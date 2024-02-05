@@ -1,4 +1,4 @@
-package com.moneybook.filter;
+package com.moneybook.usercontext;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,6 +8,13 @@ import java.io.IOException;
 
 @Component
 public class UserEmailFilter implements Filter {
+
+    private final UserContextService userContextService;
+
+    public UserEmailFilter(UserContextService userContextService) {
+        this.userContextService = userContextService;
+    }
+
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
@@ -20,7 +27,7 @@ public class UserEmailFilter implements Filter {
             throw new UnknownUserException("Unknown user " + email);
         }
 
-
+        userContextService.putUserContext(new UserContext(email));
 
     }
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "operation")
-public class Operation extends AmountEntity implements Summable {
+public class Operation extends BaseAmountEntity implements Summable {
 
     @ManyToOne(optional = false)
     private Account account;

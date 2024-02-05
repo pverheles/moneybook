@@ -2,13 +2,15 @@ package com.moneybook.usercontext;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
 
+@ExtendWith(MockitoExtension.class)
 class UserContextServiceTest {
 
     UserContextService userContextService;
@@ -18,7 +20,6 @@ class UserContextServiceTest {
 
     @BeforeEach
     void setUp() {
-        openMocks(this);
         userContextService = new UserContextService(userContextThreadLocal);
     }
 

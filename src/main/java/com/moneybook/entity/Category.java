@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "category")
-public class Category extends BaseEntity {
+public class Category extends BaseOwnedEntity {
 
 }

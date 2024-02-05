@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "envelope")
-public class Envelope extends AmountEntity {
+public class Envelope extends BaseOwnedEntity {
 
     @ManyToOne
     private ExpensePlan expensePlan;
