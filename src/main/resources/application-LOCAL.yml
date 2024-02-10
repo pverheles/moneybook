@@ -1,0 +1,8 @@
+spring:
+    datasource:
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/moneybook
+        username: postgres
+springfox:
+    documentation:
+        enabled: true
