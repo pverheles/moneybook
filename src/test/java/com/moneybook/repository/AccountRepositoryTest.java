@@ -41,7 +41,7 @@ public class AccountRepositoryTest {
         account.setState(State.A);
         account.setUser(user);
 
-        accountRepository.save(account);
+        account = accountRepository.save(account);
 
         assertThat(account.getCreateDate()).isToday();
         assertThat(account.getModifyDate()).isToday();
