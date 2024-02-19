@@ -19,8 +19,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void createOrUpdateUser(@Valid @RequestBody UserDto userDto) {
-        userService.createOrUpdateUser(userDto);
+    public UserDto createOrUpdateUser(@Valid @RequestBody UserDto userDto) {
+        return userService.createOrUpdateUser(userDto);
     }
 
 }

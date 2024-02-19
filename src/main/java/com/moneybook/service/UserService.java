@@ -19,7 +19,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public void createOrUpdateUser(UserDto userDto) {
+    public UserDto createOrUpdateUser(UserDto userDto) {
         Optional<User> userOptional = userRepository.findByEmail(userDto.getEmail());
         User user;
         if (userOptional.isEmpty()) {
@@ -28,5 +28,6 @@ public class UserService {
             user = userMapper.mapUserDtoToUser(userDto, userOptional.get());
         }
         userRepository.save(user);
+        return userDto;
     }
 }
