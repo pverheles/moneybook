@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,5 +46,17 @@ public class AccountRepositoryTest {
 
         assertThat(account.getCreateDate()).isToday();
         assertThat(account.getModifyDate()).isToday();
+    }
+
+    @Test
+    void findByUserEmail_whenAccountsExist_shouldFindUserAccounts() {
+        List<Account> accounts = accountRepository.findByUserEmail("pet@mail.com");
+        assertThat(accounts).hasSize(1);
+    }
+
+    @Test
+    void findByUserEmail_whenAccountsNotExist_shouldNotFindUserAccounts() {
+        List<Account> accounts = accountRepository.findByUserEmail("hasnoaacounts@mail.com");
+        assertThat(accounts).isEmpty();
     }
 }

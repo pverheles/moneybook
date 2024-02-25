@@ -2,6 +2,7 @@ package com.moneybook.service;
 
 import com.moneybook.dto.AccountCreationDto;
 import com.moneybook.dto.AccountIdDto;
+import com.moneybook.dto.AccountReadDto;
 import com.moneybook.entity.Account;
 import com.moneybook.entity.User;
 import com.moneybook.mapper.AccountMapper;
@@ -10,6 +11,8 @@ import com.moneybook.repository.UserRepository;
 import com.moneybook.usercontext.UserContextService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -35,5 +38,11 @@ public class AccountService {
         account = accountRepository.save(account);
         AccountIdDto accountIdDto = accountMapper.mapEntityToAccountIdDto(account);
         return accountIdDto;
+    }
+
+    public List<AccountReadDto> getAccounts() {
+        String email = userContextService.getUserContext().getEmail();
+        List<Account> accounts = accountRepository.findByUserEmail(email);
+        return accounts.stream().map(accountMapper::mapEntityToAccountReadDto).toList();
     }
 }
