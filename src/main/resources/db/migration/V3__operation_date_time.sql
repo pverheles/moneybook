@@ -1,0 +1,1 @@
+ALTER TABLE operation ADD COLUMN operation_datetime TIMESTAMP NOT NULL;

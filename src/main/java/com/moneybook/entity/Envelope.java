@@ -17,4 +17,7 @@ public class Envelope extends BaseOwnedEntity {
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
+    @ManyToOne
+    private Category category;
+
 }
