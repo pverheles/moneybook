@@ -10,8 +10,8 @@ public class OperationMapper {
             Account account,
             ExpensePlan expensePlan,
             Envelope envelope,
-            Category category
-    ) {
+            Category category,
+            User user) {
         Operation operation = new Operation();
         operation.setAmount(operationCreationDto.getAmount());
         operation.setOperationDateTime(operationCreationDto.getOperationDateTime());
@@ -20,6 +20,7 @@ public class OperationMapper {
         operation.setExpensePlan(expensePlan);
         operation.setEnvelope(envelope);
         operation.setCategory(category);
+        operation.setUser(user);
 
         return operation;
     }

@@ -9,7 +9,6 @@ import com.moneybook.mapper.AccountMapper;
 import com.moneybook.repository.AccountRepository;
 import com.moneybook.repository.UserRepository;
 import com.moneybook.usercontext.UserContextService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class AccountService {
 
     public AccountIdDto createAccount(AccountCreationDto accountDto) {
         String email = userContextService.getUserContext().getEmail();
-        User user = userRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
+        User user = userRepository.findByEmail(email).orElseThrow();
         Account account = accountMapper.mapAccountCreationDtoToEntity(accountDto, user);
         account = accountRepository.save(account);
         AccountIdDto accountIdDto = accountMapper.mapEntityToAccountIdDto(account);

@@ -34,9 +34,10 @@ class OperationMapperTest {
         ExpensePlan expensePlan = new ExpensePlan();
         Envelope envelope = new Envelope();
         Category category = new Category();
+        User user = new User();
 
         Operation operation = operationMapper.mapOperationCreationDtoToEntity(operationCreationDto,
-                account, expensePlan, envelope, category);
+                account, expensePlan, envelope, category, user);
 
         assertThat(operation.getAmount()).isEqualTo(amount);
         assertThat(operation.getOperationDateTime()).isEqualTo(operationDateTime);
@@ -45,6 +46,7 @@ class OperationMapperTest {
         assertThat(operation.getExpensePlan()).isSameAs(expensePlan);
         assertThat(operation.getEnvelope()).isSameAs(envelope);
         assertThat(operation.getCategory()).isSameAs(category);
+        assertThat(operation.getUser()).isSameAs(user);
 
     }
 }

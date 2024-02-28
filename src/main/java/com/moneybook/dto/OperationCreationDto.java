@@ -12,17 +12,17 @@ import java.time.LocalDateTime;
 public class OperationCreationDto {
 
     @NotNull
-    private long accountId;
+    private Long accountId;
 
     @NotNull
     private BigDecimal amount;
 
-    private long expensePlanId;
+    private Long expensePlanId;
 
-    private long envelopeId;
+    private Long envelopeId;
 
     @NotNull
-    private long categoryId;
+    private Long categoryId;
 
     @NotNull
     private LocalDateTime operationDateTime;
