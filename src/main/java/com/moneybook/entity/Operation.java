@@ -31,6 +31,7 @@ public class Operation extends BaseAmountEntity implements Summable {
     @ManyToOne
     private Envelope envelope;
 
+    @Column(name = "operation_datetime")
     private LocalDateTime operationDateTime;
 
 }

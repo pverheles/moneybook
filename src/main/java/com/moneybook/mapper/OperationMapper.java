@@ -1,6 +1,7 @@
 package com.moneybook.mapper;
 
 import com.moneybook.dto.OperationCreationDto;
+import com.moneybook.dto.OperationRowDto;
 import com.moneybook.entity.*;
 
 public class OperationMapper {
@@ -23,5 +24,17 @@ public class OperationMapper {
         operation.setUser(user);
 
         return operation;
+    }
+
+    public OperationRowDto mapOperationToOperationRowDto(Operation operation) {
+        OperationRowDto operationRowDto = new OperationRowDto();
+        operationRowDto.setId(operation.getId());
+        operationRowDto.setCategoryId(operation.getCategory().getId());
+        operationRowDto.setCategoryName(operation.getCategory().getName());
+        operationRowDto.setExpensePlanName(operation.getExpensePlan().getName());
+        operationRowDto.setAmount(operation.getAmount());
+        operationRowDto.setComment(operation.getComment());
+        operationRowDto.setOperationDateTime(operation.getOperationDateTime());
+        return operationRowDto;
     }
 }

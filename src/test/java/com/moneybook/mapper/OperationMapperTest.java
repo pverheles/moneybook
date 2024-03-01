@@ -1,6 +1,7 @@
 package com.moneybook.mapper;
 
 import com.moneybook.dto.OperationCreationDto;
+import com.moneybook.dto.OperationRowDto;
 import com.moneybook.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,6 +48,40 @@ class OperationMapperTest {
         assertThat(operation.getEnvelope()).isSameAs(envelope);
         assertThat(operation.getCategory()).isSameAs(category);
         assertThat(operation.getUser()).isSameAs(user);
+    }
+
+    @Test
+    void mapOperationToOperationRowDto_shouldMapCorrectly() {
+        Long id = 3L;
+        Long categoryId = 6L;
+        String categoryName = "Goods";
+        String expensePlanName = "January";
+        BigDecimal amount = new BigDecimal("24");
+        LocalDateTime operationDateTime = LocalDateTime.of(2024, Month.JANUARY, 2, 10, 12);
+        String comment = "potato";
+
+        Operation operation = new Operation();
+        operation.setId(id);
+        operation.setAmount(amount);
+        Category category = new Category();
+        category.setName(categoryName);
+        category.setId(categoryId);
+        operation.setCategory(category);
+        ExpensePlan expensePlan = new ExpensePlan();
+        expensePlan.setName(expensePlanName);
+        operation.setExpensePlan(expensePlan);
+        operation.setOperationDateTime(operationDateTime);
+        operation.setComment(comment);
+
+        OperationRowDto operationRowDto = operationMapper.mapOperationToOperationRowDto(operation);
+
+        assertThat(operationRowDto.getId()).isEqualTo(id);
+        assertThat(operationRowDto.getCategoryId()).isEqualTo(categoryId);
+        assertThat(operationRowDto.getCategoryName()).isEqualTo(categoryName);
+        assertThat(operationRowDto.getExpensePlanName()).isEqualTo(expensePlanName);
+        assertThat(operationRowDto.getAmount()).isEqualTo(amount);
+        assertThat(operationRowDto.getOperationDateTime()).isEqualTo(operationDateTime);
+        assertThat(operationRowDto.getComment()).isEqualTo(comment);
 
     }
 }

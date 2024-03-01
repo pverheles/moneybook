@@ -5,7 +5,11 @@ import com.moneybook.entity.*;
 import com.moneybook.mapper.OperationMapper;
 import com.moneybook.repository.*;
 import com.moneybook.usercontext.UserContextService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class OperationService {
@@ -54,5 +58,10 @@ public class OperationService {
         Operation operation = operationMapper.mapOperationCreationDtoToEntity(operationCreationDto, account, expensePlan, envelope, category, user);
 
         operationRepository.save(operation);
+
+    }
+
+    public Page<OperationCreationDto> findOperations(LocalDateTime periodStart, LocalDateTime periodEnd, Pageable pageable) {
+        return null;
     }
 }
