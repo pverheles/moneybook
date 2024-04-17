@@ -3,7 +3,9 @@ package com.moneybook.mapper;
 import com.moneybook.dto.OperationCreationDto;
 import com.moneybook.dto.OperationRowDto;
 import com.moneybook.entity.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OperationMapper {
 
     public Operation mapOperationCreationDtoToEntity(
