@@ -23,7 +23,7 @@ public class OperationController {
     }
 
     @PostMapping
-    @Parameter(in = ParameterIn.HEADER,name = "email", required = true, content = @Content(schema = @Schema(type = "string")))
+    @Parameter(in = ParameterIn.HEADER, name = "email", required = true, content = @Content(schema = @Schema(type = "string")))
     public void createOperation(@RequestBody @Valid OperationCreationDto operationCreationDto) {
         operationService.createOperation(operationCreationDto);
     }

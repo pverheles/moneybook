@@ -2,6 +2,7 @@ package com.moneybook.entity;
 
 import com.moneybook.constants.Bank;
 import com.moneybook.constants.Currency;
+import com.moneybook.constants.DBConstants;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,5 +19,8 @@ public class Account extends BaseAmountEntity {
 
     @Enumerated(EnumType.STRING)
     private Bank bank;
+
+    @Column(length = DBConstants.NAME_LENGTH)
+    private String name;
 
 }

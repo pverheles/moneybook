@@ -31,18 +31,10 @@ public abstract class BaseEntity {
 	@Column(name = "modify_date")
 	private Date modifyDate;
 
-	@Column(length = DBConstants.NAME_LENGTH)
-	private String name;
-
 	@Column(length = DBConstants.COMMENTS_LENGTH)
 	private String comment;
 
 	@Enumerated(EnumType.STRING)
 	private State state;
-	
-	@Override
-	public String toString() {
-		return name;
-	}	
 
 }

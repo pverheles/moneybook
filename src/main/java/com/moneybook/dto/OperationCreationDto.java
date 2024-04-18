@@ -1,5 +1,6 @@
 package com.moneybook.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class OperationCreationDto {
     private Long categoryId;
 
     @NotNull
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime operationDateTime;
 
     private String comment;
