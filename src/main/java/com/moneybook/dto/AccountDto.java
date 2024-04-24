@@ -4,10 +4,7 @@ import com.moneybook.constants.Bank;
 import com.moneybook.constants.Currency;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 

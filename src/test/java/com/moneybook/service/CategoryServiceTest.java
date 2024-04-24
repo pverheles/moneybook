@@ -1,6 +1,9 @@
 package com.moneybook.service;
 
+import com.moneybook.dto.AccountReadDto;
 import com.moneybook.dto.CategoryCreationDto;
+import com.moneybook.dto.CategoryReadDto;
+import com.moneybook.entity.Account;
 import com.moneybook.entity.Category;
 import com.moneybook.entity.User;
 import com.moneybook.mapper.CategoryMapper;
@@ -14,8 +17,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
@@ -62,5 +68,29 @@ class CategoryServiceTest {
         categoryService.createCategory(categoryCreationDto);
 
         verify(categoryRepository).save(category);
+    }
+
+    @Test
+    void getCategories_shouldReturnListOfCategoriesOfUserInContext() {
+        UserContext userContext = new UserContext("petro@mail.com");
+
+        List<Category> categories = new ArrayList<>();
+        Category category = new Category();
+        category.setName("test");
+        categories.add(category);
+
+        CategoryReadDto categoryReadDto = new CategoryReadDto();
+        categoryReadDto.setName("test");
+
+        when(userContextService.getUserContext()).thenReturn(userContext);
+        when(categoryRepository.findByUserEmail("petro@mail.com")).thenReturn(categories);
+        when(categoryMapper.mapEntityToCategoryReadDto(category)).thenReturn(categoryReadDto);
+
+        List<CategoryReadDto> expectedCategoryDtos = new ArrayList<>();
+        expectedCategoryDtos.add(categoryReadDto);
+
+        List<CategoryReadDto> actualAccounts = categoryService.getCategories();
+
+        assertThat(actualAccounts).isEqualTo(expectedCategoryDtos);
     }
 }

@@ -1,15 +1,12 @@
 package com.moneybook.dto;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-@Getter
-@Setter
-public class CategoryCreationDto {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class CategoryCreationDto extends CategoryDto {
 
-    @NonNull
-    private String name;
-
-    private String comment;
 }
