@@ -2,6 +2,7 @@ package com.moneybook.entity;
 
 
 import com.moneybook.constants.Currency;
+import com.moneybook.constants.OperationType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,5 +34,8 @@ public class Operation extends BaseAmountEntity implements Summable {
 
     @Column(name = "operation_datetime")
     private LocalDateTime operationDateTime;
+
+    @Convert(converter = OperationCodeConverter.class)
+    private OperationType type;
 
 }

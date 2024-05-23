@@ -1,5 +1,6 @@
 package com.moneybook.mapper;
 
+import com.moneybook.constants.State;
 import com.moneybook.dto.OperationCreationDto;
 import com.moneybook.dto.OperationRowDto;
 import com.moneybook.entity.*;
@@ -24,6 +25,8 @@ public class OperationMapper {
         operation.setEnvelope(envelope);
         operation.setCategory(category);
         operation.setUser(user);
+        operation.setState(State.A);
+        operation.setType(operationCreationDto.getType());
 
         return operation;
     }

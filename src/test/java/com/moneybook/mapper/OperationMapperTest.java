@@ -1,5 +1,7 @@
 package com.moneybook.mapper;
 
+import com.moneybook.constants.OperationType;
+import com.moneybook.constants.State;
 import com.moneybook.dto.OperationCreationDto;
 import com.moneybook.dto.OperationRowDto;
 import com.moneybook.entity.*;
@@ -30,6 +32,7 @@ class OperationMapperTest {
         operationCreationDto.setAmount(amount);
         String comment = "my comment";
         operationCreationDto.setComment(comment);
+        operationCreationDto.setType(OperationType.INCOME);
 
         Account account = new Account();
         ExpensePlan expensePlan = new ExpensePlan();
@@ -48,6 +51,8 @@ class OperationMapperTest {
         assertThat(operation.getEnvelope()).isSameAs(envelope);
         assertThat(operation.getCategory()).isSameAs(category);
         assertThat(operation.getUser()).isSameAs(user);
+        assertThat(operation.getType()).isEqualTo(OperationType.INCOME);
+        assertThat(operation.getState()).isEqualTo(State.A);
     }
 
     @Test
